@@ -45,7 +45,7 @@ const App = () => {
   }, []);
 
   return (
-    <div>
+    <div className={currentMode === "Dark" ? "dark" : ""}>
       <BrowserRouter>
         <div className="flex relative dark:bg-main-dar-bg">
           <div className="fixed right-4 bottom-4" style={{ zIndex: "1000" }}>
@@ -53,7 +53,8 @@ const App = () => {
               <button
                 type="button"
                 className="text-3xl p-3 hover:drop-shadow-xl hover:bg-light-gray text-white "
-                style={{ background: "blue", borderRadius: "50%" }}>
+                onClick={() => setThemeSettings(true)}
+                style={{ background: currentColor, borderRadius: "50%" }}>
                 <FiSettings />
               </button>
             </TooltipComponent>
@@ -75,7 +76,7 @@ const App = () => {
               <Navbar />
             </div>
             <div>
-              {/* {themeSettings && <ThemeSettings />} */}
+              {themeSettings && <ThemeSettings />}
               <Routes>
                 {/* dashboard  */}
                 <Route path="/" element={<Ecommerce />} />
